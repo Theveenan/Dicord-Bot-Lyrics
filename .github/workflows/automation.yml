@@ -45,11 +45,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Deploy to EC2
-        runs-on: ubuntu-latest
-        steps:
-          - name: First EC2 Step
-            run: |
-              echo "${{ secrets.AWS_SSH }}" >> discordBot.pem
-              ssh -i discordBot.pem 172.31.89.238
-              ls
+        run: |
+          echo "${{ secrets.AWS_SSH }}" >> discordBot.pem
+          ssh -i discordBot.pem 172.31.89.238
+          ls
     

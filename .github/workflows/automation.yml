@@ -44,17 +44,19 @@ jobs:
       #     push: true
       #     tags: ${{ steps.meta.outputs.tags }}
       #     labels: ${{ steps.meta.outputs.labels }}
-      - name: Adding Known Hosts
-        run: |
-          mkdir ~/.ssh
-          touch ~/.ssh/known_hosts
-          ssh-keyscan -H 54.152.187.103 >> ~/.ssh/known_hosts
-
+      
 
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.AWS_SSH }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+
+      - name: Adding Known Hosts
+        run: |
+          mkdir ~/.ssh
+          touch ~/.ssh/known_hosts
+          ssh-keyscan -H 54.152.187.103 >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
         run: |

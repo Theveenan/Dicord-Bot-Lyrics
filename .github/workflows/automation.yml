@@ -44,12 +44,16 @@ jobs:
       #     push: true
       #     tags: ${{ steps.meta.outputs.tags }}
       #     labels: ${{ steps.meta.outputs.labels }}
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H 54.152.187.103 >> ~/.ssh/known_hosts
 
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.AWS_SSH }}
 
       - name: Deploy to EC2
         run: |
-          echo "${{ secrets.AWS_SSH }}" >> discordBot.pem
-          cat discordBot.pem
-          # ssh -i discordBot.pem 54.152.187.103
-          # ls
+          ssh -i discordBot.pem 54.152.187.103
+          ls
     

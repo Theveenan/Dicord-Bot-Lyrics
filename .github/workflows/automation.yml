@@ -46,6 +46,7 @@ jobs:
       #     labels: ${{ steps.meta.outputs.labels }}
       - name: Adding Known Hosts
         run: |
+          mkdir ~/.ssh
           touch ~/.ssh/known_hosts
           ssh-keyscan -H 54.152.187.103 >> ~/.ssh/known_hosts
 

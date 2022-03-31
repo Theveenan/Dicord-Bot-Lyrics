@@ -44,13 +44,12 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-
-  deploy_to_EC2:
-    name: Deploy to EC2
-    runs-on: ubuntu-latest
-    steps:
-      - name: First EC2 Step
-        run: |
-          echo ${{ secrets.AWS_SSH }}>> discordBot.pem
-          ssh -i discordBot.pem 172.31.89.238
-          ls
+      - name: Deploy to EC2
+        runs-on: ubuntu-latest
+        steps:
+          - name: First EC2 Step
+            run: |
+              echo "${{ secrets.AWS_SSH }}" >> discordBot.pem
+              ssh -i discordBot.pem 172.31.89.238
+              ls
+    

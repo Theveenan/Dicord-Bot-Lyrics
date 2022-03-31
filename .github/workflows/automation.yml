@@ -59,6 +59,7 @@ jobs:
       - name: Deploy to EC2
         run: |
           file ~/.ssh/*
-          ssh -i ~/.ssh/id_rsa.pem 54.152.187.103
+          cat ~/.ssh/id_rsa
+          ssh -i ~/.ssh/id_rsa 54.152.187.103
           ls
     

@@ -50,6 +50,6 @@ jobs:
         run: |
           echo "${{ secrets.AWS_SSH }}" >> discordBot.pem
           cat discordBot.pem
-          ssh -i discordBot.pem 54.152.187.103
-          ls
+          # ssh -i discordBot.pem 54.152.187.103
+          # ls
     

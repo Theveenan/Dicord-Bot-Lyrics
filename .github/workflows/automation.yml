@@ -60,10 +60,10 @@ jobs:
         run: |
           ssh -i ~/.ssh/id_rsa ec2-user@54.152.187.103 -o StrictHostKeyChecking=no '
             sudo service docker start
-            docker kill $(docker ps -q)
-            docker rm $(docker ps -a -q)
-            docker rmi $(docker images -q)
-            docker pull theveenan/discord-bot:main
-            docker run -dp 80:80 theveenan/discord-bot:main
+            sudo docker kill $(docker ps -q)
+            sudo docker rm $(docker ps -a -q)
+            sudo docker rmi $(docker images -q)
+            sudo docker pull theveenan/discord-bot:main
+            sudo docker run -dp 80:80 theveenan/discord-bot:main
           '
     

@@ -58,6 +58,7 @@ jobs:
 
       - name: Deploy to EC2
         run: |
-          ssh -i ~/.ssh/id_rsa ec2-user@54.152.187.103 -o StrictHostKeyChecking=no
-          ls
+          ssh -i ~/.ssh/id_rsa ec2-user@54.152.187.103 -o StrictHostKeyChecking=no '
+            ls
+          '
     
